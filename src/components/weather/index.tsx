@@ -27,13 +27,12 @@ function Weather() {
     <div>
       <h1>Weather</h1>
 
-      {loading && <p>Loading...</p>}
+      <Form 
+        disabled={loading}
+        onSubmit={(location: string) => fetchWeather(location)} 
+      />
 
-      {!loading && (
-        <Form 
-          onSubmit={(location: string) => fetchWeather(location)} 
-        />
-      )}
+      {loading && <p>Loading...</p>}
 
       {error && <p>{error}</p>}
 

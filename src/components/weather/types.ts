@@ -1,6 +1,7 @@
 import { WeatherResponseDay } from "@/types/weather";
 
 export interface FormProps {
+  disabled?: boolean;
   onSubmit: (location: string) => void;
 }
 

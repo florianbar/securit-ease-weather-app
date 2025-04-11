@@ -1,8 +1,9 @@
 import { useState } from "react";
 
 import { FormProps } from "./types";
+import styles from "./styles.module.scss";
 
-function Form({ onSubmit }: FormProps) {
+function Form({ onSubmit, disabled }: FormProps) {
   const [enteredLocation, setEnteredLocation] = useState<string>("");
   const [formError, setFormError] = useState<string>("");
 
@@ -30,6 +31,8 @@ function Form({ onSubmit }: FormProps) {
         placeholder="Enter a location" 
         value={enteredLocation} 
         onChange={handleLocationChange}
+        className={styles.search}
+        disabled={disabled}
       />
       {formError && <p>{formError}</p>}
     </form>
