@@ -1,42 +1,27 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import { useWeatherStore } from "@/stores/weather";
+import Form from "./form";
+import SelectedDay from "./selected-day";
+import Days from "./days";
 
 function Weather() {
   const { 
-    weather, 
+    days, 
+    selectedDay,
     loading, 
     error, 
     actions: { 
-      fetchWeather 
+      fetchWeather,
+      selectDay
     }
   } = useWeatherStore();
 
-  const [enteredLocation, setEnteredLocation] = useState<string>("");
-  const [formError, setFormError] = useState<string>("");
-
-  function handleLocationChange(event: React.ChangeEvent<HTMLInputElement>): void {
-    setFormError("");
-    setEnteredLocation(event.target.value);
-  }
-
-  function handleFormSubmit (event: React.FormEvent<HTMLFormElement>): void {
-    event.preventDefault();
-    setFormError("");
-
-    if (!enteredLocation) {
-      setFormError("Please enter a location");
-      return;
-    }
-
-    fetchWeather(enteredLocation);
-  }
-
   useEffect(() => {
-    console.log("Weather", weather);
-  }, [weather]);
+    console.log("Weather days:", days);
+  }, [days]);
 
   return (
     <div>
@@ -45,16 +30,25 @@ function Weather() {
       {loading && <p>Loading...</p>}
 
       {!loading && (
-        <form onSubmit={handleFormSubmit}>
-          <input 
-            type="text" 
-            placeholder="Enter a location" 
-            value={enteredLocation} 
-            onChange={handleLocationChange}
+        <Form 
+          onSubmit={(location: string) => fetchWeather(location)} 
+        />
+      )}
+
+      {error && <p>{error}</p>}
+
+      {selectedDay && (
+        <SelectedDay day={selectedDay} />
+      )}
+
+      {days?.length > 0 && (
+        <>
+          <h2>Days</h2>
+          <Days 
+            items={days} 
+            onSelect={(datetime: string) => selectDay(datetime)}
           />
-          {formError && <p>{formError}</p>}
-          {error && <p>{error}</p>}
-        </form>
+        </>
       )}
     </div>
   );

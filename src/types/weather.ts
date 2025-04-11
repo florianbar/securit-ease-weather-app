@@ -1,4 +1,4 @@
-interface Day {
+export interface WeatherResponseDay {
   datetime: string;
   datetimeEpoch: number;
   tempmax?: number;
@@ -37,7 +37,7 @@ interface Day {
   source: string;
 }
 
-interface Station {
+interface WeatherResponseStation {
   id: string;
   distance: number;
   latitude: number;
@@ -56,7 +56,7 @@ export interface WeatherResponse {
   address: string;
   timezone: string;
   tzoffset: number;
-  days: Day[];
-  stations: Record<string, Station>;
-  currentConditions: Day;
+  days: WeatherResponseDay[];
+  stations: Record<string, WeatherResponseStation>;
+  currentConditions: WeatherResponseDay;
 }
