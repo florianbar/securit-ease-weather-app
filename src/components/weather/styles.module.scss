@@ -1,3 +1,7 @@
+// create sass varaibles for easing
+$anim-duration: 0.2s;
+$anim-effect: ease-in-out;
+
 .search {
   margin-bottom: 1rem;
   padding: 0.5rem 0.75rem;
@@ -9,19 +13,48 @@
 .days {
   display: flex;
   justify-content: space-between;
+  padding: 0.5rem;
 }
 
 .day {
-  border: 1px solid #ccc;
-  margin: 0.5rem;
-  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
   border-radius: 0.5rem;
-
-  &.selected {
-    background-color: #333;
-  }
+  border: 1px solid transparent;
+  text-align: center;
+  transition: background-color $anim-duration $anim-effect,
+    border-color $anim-duration $anim-effect;
 
   &:hover {
-    background-color: #333;
+    background-color: #e8f6ff;
   }
+
+  &.selected {
+    background-color: #fff;
+    border-color: #a4dcff;
+  }
+}
+
+.icon {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.largeIcon {
+  width: 5rem;
+  height: 5rem;
+}
+
+.dayOfWeek {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.temp {
+  font-size: 0.75rem;
+  font-weight: bold;
 }

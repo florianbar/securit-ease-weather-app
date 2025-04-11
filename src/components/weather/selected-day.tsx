@@ -1,9 +1,18 @@
+import Image from "next/image";
+
 import { SelectedDayProps } from "./types";
+import styles from "./styles.module.scss";
 
 function SelectedDay({ day }: SelectedDayProps) {
   return (
-    <div style={{margin: "2rem 0"}}>
-      <h2>Selected Day</h2>
+    <div>
+      <Image
+        src={`/icons/${day.icon}.svg`}
+        alt={day.conditions}
+        width={50}
+        height={50}
+        className={styles.largeIcon}
+      />
       <p>{day.datetime}</p>
       <p>Wind: {day.windgust} km/h</p>
       <p>Precip: {day.precip} mm</p>

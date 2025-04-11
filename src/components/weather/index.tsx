@@ -8,15 +8,12 @@ import SelectedDay from "./selected-day";
 import Days from "./days";
 
 function Weather() {
-  const { 
-    days, 
+  const {
+    days,
     selectedDay,
-    loading, 
-    error, 
-    actions: { 
-      fetchWeather,
-      selectDay
-    }
+    loading,
+    error,
+    actions: { fetchWeather, selectDay },
   } = useWeatherStore();
 
   useEffect(() => {
@@ -24,33 +21,26 @@ function Weather() {
   }, [days]);
 
   return (
-    <div>
-      <h1>Weather</h1>
-
-      <Form 
+    <>
+      <Form
         disabled={loading}
-        onSubmit={(location: string) => fetchWeather(location)} 
+        onSubmit={(location: string) => fetchWeather(location)}
       />
 
       {loading && <p>Loading...</p>}
 
       {error && <p>{error}</p>}
 
-      {selectedDay && (
-        <SelectedDay day={selectedDay} />
-      )}
+      {selectedDay && <SelectedDay day={selectedDay} />}
 
       {days?.length > 0 && (
-        <>
-          <h2>Days</h2>
-          <Days 
-            items={days} 
-            selectedDay={selectedDay}
-            onSelect={(datetime: string) => selectDay(datetime)}
-          />
-        </>
+        <Days
+          items={days}
+          selectedDay={selectedDay}
+          onSelect={(datetime: string) => selectDay(datetime)}
+        />
       )}
-    </div>
+    </>
   );
 }
 
