@@ -1,7 +1,7 @@
 import { create } from "zustand";
 
 import { WeatherResponse } from "@/types/weather";
-import { WeatherStoreState,  } from "./types";
+import { WeatherStoreState } from "./types";
 import { fetchWeather } from "./api";
 
 const initialState = {
@@ -19,10 +19,15 @@ export const useWeatherStore = create<WeatherStoreState>((set, get) => ({
 
       try {
         const response: WeatherResponse = await fetchWeather(location);
-        set({ days: response.days });
+        set({ days: response.days, selectedDay: response.days[3] });
       } catch (error) {
         console.error(error);
-        set({ error: error instanceof Error ? error.message : "An unknown error occurred" });
+        set({
+          error:
+            error instanceof Error
+              ? error.message
+              : "An unknown error occurred",
+        });
       } finally {
         set({ loading: false });
       }
@@ -32,5 +37,5 @@ export const useWeatherStore = create<WeatherStoreState>((set, get) => ({
       const day = get().days.find((day) => day.datetime === datetime);
       set({ selectedDay: day });
     },
-  }
+  },
 }));

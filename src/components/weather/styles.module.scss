@@ -8,6 +8,11 @@ $anim-effect: ease-in-out;
   font-size: 1.25rem;
   border: 1px solid #ccc;
   border-radius: 0.5rem;
+  width: 100%;
+}
+
+.searchError {
+  color: #ff6b6b;
 }
 
 .days {
@@ -34,18 +39,13 @@ $anim-effect: ease-in-out;
 
   &.selected {
     background-color: #fff;
-    border-color: #a4dcff;
+    border-color: #7bccff;
   }
 }
 
 .icon {
   width: 1.75rem;
   height: 1.75rem;
-}
-
-.largeIcon {
-  width: 5rem;
-  height: 5rem;
 }
 
 .dayOfWeek {
@@ -57,4 +57,56 @@ $anim-effect: ease-in-out;
 .temp {
   font-size: 0.75rem;
   font-weight: bold;
+}
+
+.selectedDay {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+.selectedDayIcon {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+  img {
+    width: 6rem;
+    height: 6rem;
+  }
+
+  p {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+}
+
+.selectedDayTemp {
+  text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.maxTemp {
+  color: #ff6b6b;
+}
+
+.minTemp {
+  color: #3cb2fc;
+}
+
+.selectedDayInfo {
+  text-align: left;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.9rem;
 }

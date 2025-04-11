@@ -7,7 +7,9 @@ function Form({ onSubmit, disabled }: FormProps) {
   const [enteredLocation, setEnteredLocation] = useState<string>("");
   const [formError, setFormError] = useState<string>("");
 
-  function handleLocationChange(event: React.ChangeEvent<HTMLInputElement>): void {
+  function handleLocationChange(
+    event: React.ChangeEvent<HTMLInputElement>
+  ): void {
     setFormError("");
     setEnteredLocation(event.target.value);
   }
@@ -26,15 +28,15 @@ function Form({ onSubmit, disabled }: FormProps) {
 
   return (
     <form onSubmit={handleFormSubmit}>
-      <input 
-        type="text" 
-        placeholder="Enter a location" 
-        value={enteredLocation} 
+      <input
+        type="text"
+        placeholder="Enter a location"
+        value={enteredLocation}
         onChange={handleLocationChange}
         className={styles.search}
         disabled={disabled}
       />
-      {formError && <p>{formError}</p>}
+      {formError && <p className={styles.searchError}>{formError}</p>}
     </form>
   );
 }

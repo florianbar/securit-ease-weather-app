@@ -22,6 +22,8 @@ function Weather() {
 
   return (
     <>
+      <h1>Weather App</h1>
+
       <Form
         disabled={loading}
         onSubmit={(location: string) => fetchWeather(location)}

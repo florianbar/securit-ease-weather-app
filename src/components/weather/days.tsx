@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import { getFormattedTemp } from "@/utils/weather";
 import { WeatherResponseDay } from "@/types/weather";
 import { DaysProps } from "./types";
 import styles from "./styles.module.scss";
@@ -8,15 +9,11 @@ function Days({ items, selectedDay, onSelect }: DaysProps) {
   return (
     <div className={styles.days}>
       {items.map((day: WeatherResponseDay) => {
-        const today = new Date().toISOString().split("T")[0];
-        const isToday = day.datetime === today;
-
         const isSelected = selectedDay?.datetime === day.datetime;
 
         const dayOfWeek = new Date(day.datetime).toLocaleDateString("en-US", {
           weekday: "short",
         });
-        const temp = (day.temp = Math.round(day.temp));
 
         return (
           <div
@@ -33,10 +30,7 @@ function Days({ items, selectedDay, onSelect }: DaysProps) {
               height={50}
               className={styles.icon}
             />
-            {/* {isToday && <p><strong>Today</strong></p>} */}
-            {/* <p>{day.conditions}</p> */}
-            {/* <p>{day.datetime}</p> */}
-            <p className={styles.temp}>{temp} °C</p>
+            <p className={styles.temp}>{getFormattedTemp(day.temp)}</p>
           </div>
         );
       })}
