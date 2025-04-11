@@ -6,6 +6,7 @@ export interface FormProps {
 
 export interface DaysProps {
   items: WeatherResponseDay[];
+  selectedDay: WeatherResponseDay | null;
   onSelect: (datetime: string) => void;
 }
 

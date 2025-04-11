@@ -46,6 +46,7 @@ function Weather() {
           <h2>Days</h2>
           <Days 
             items={days} 
+            selectedDay={selectedDay}
             onSelect={(datetime: string) => selectDay(datetime)}
           />
         </>
