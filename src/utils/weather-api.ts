@@ -1,21 +1,36 @@
-import { WEATHER_API_URLS } from '@/constants/weather-api';
+import { WeatherResponse } from '@/types/weather';
+// import { WEATHER_RESPONSE } from "@/mock-data/weather";
 
-import { WeatherResponse } from '@/types/weather-api';
-import { WEATHER_RESPONSE } from "@/mock-data/weather-api";
+function getEndpointUrl (location: string): string {
+  const baseUrl = process.env.WEATHER_BASE_URL;
 
-export async function fetchCurrentWeather (city: string): Promise<WeatherResponse> {
-  /*
-  const response = await fetch(`${WEATHER_API_URLS.CURRENT}?access_key=${process.env.WEATHER_API_KEY}&query=${city}`);
+  const startDate = "2025-04-08";
+  const endDate = "2025-04-14";
+
+  const params = new URLSearchParams({
+    key: process.env.WEATHER_API_KEY || "",
+    include: "days,current",
+    unitGroup: "metric"
+  });
+
+  const url = `${baseUrl}/${location}/${startDate}/${endDate}?${params}`;
+  return url;
+}
+
+export async function fetchWeather (location: string): Promise<WeatherResponse> {
+  const response = await fetch(getEndpointUrl(location));
 
   if (!response.ok) {
-    throw new Error('Failed to fetch current weather data');
+    const errorDetails = await response.text();
+    throw new Error(
+      `Error: ${response.status} - ${response.statusText}. Details: ${errorDetails}`
+    );
   }
 
   const data = await response.json();
   return data;
-  */
 
-  // Mock data to prevent rate limiting
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-  return WEATHER_RESPONSE;
+  // // Mock data to prevent rate limiting
+  // await new Promise((resolve) => setTimeout(resolve, 1000));
+  // return WEATHER_RESPONSE;
 };

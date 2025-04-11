@@ -1,10 +1,10 @@
 import styles from "./page.module.css";
 
-import { fetchCurrentWeather } from "@/utils/weather-api";
+import { fetchWeather } from "@/utils/weather-api";
 
 export default async function Home() {  
-  const currentWeather = await fetchCurrentWeather('Cape Town, South Africa');
-  console.log("currentWeather", currentWeather);
+  const weatherResponse = await fetchWeather('Cape Town, South Africa');
+  console.log("weatherResponse", weatherResponse);
 
   return (
     <div className={styles.page}>
