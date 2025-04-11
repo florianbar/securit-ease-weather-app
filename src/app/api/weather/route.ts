@@ -40,6 +40,7 @@ export async function GET(request: Request): Promise<Response> {
   //   );
   // }
 
+  await new Promise((resolve) => setTimeout(resolve, 1000));
   return new Response(JSON.stringify(WEATHER_RESPONSE), {
     status: 200,
     headers: { "Content-Type": "application/json" },
