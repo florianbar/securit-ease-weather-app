@@ -1,15 +1,12 @@
 import styles from "./page.module.css";
 
-import { fetchWeather } from "@/utils/weather-api";
+import Weather from "@/components/weather";
 
-export default async function Home() {  
-  const weatherResponse = await fetchWeather('Cape Town, South Africa');
-  console.log("weatherResponse", weatherResponse);
-
+export default function Home() {  
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        Weather App
+        <Weather />
       </main>
     </div>
   );
