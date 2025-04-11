@@ -14,6 +14,8 @@ export const useWeatherStore = create<WeatherStoreState>((set) => ({
   ...initialState,
   actions: {
     fetchWeather: async (location: string) => {
+      set({ loading: true, error: null });
+
       try {
         const response: WeatherResponse = await fetchWeather(location);
         set({ weather: response });
