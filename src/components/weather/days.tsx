@@ -1,9 +1,5 @@
 import { WeatherResponseDay } from "@/types/weather";
-
-interface DaysProps {
-  items: WeatherResponseDay[];
-  onSelect: (datetime: string) => void;
-}
+import { DaysProps } from "./types";
 
 function Days({ items, onSelect }: DaysProps) {
   return items.map((day: WeatherResponseDay) => {

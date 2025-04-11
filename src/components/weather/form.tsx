@@ -1,8 +1,6 @@
 import { useState } from "react";
 
-interface FormProps {
-  onSubmit: (location: string) => void;
-}
+import { FormProps } from "./types";
 
 function Form({ onSubmit }: FormProps) {
   const [enteredLocation, setEnteredLocation] = useState<string>("");

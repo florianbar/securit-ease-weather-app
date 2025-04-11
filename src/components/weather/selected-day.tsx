@@ -1,8 +1,4 @@
-import { WeatherResponseDay } from "@/types/weather";
-
-interface SelectedDayProps {
-  day: WeatherResponseDay;
-}
+import { SelectedDayProps } from "./types";
 
 function SelectedDay({ day }: SelectedDayProps) {
   return (
