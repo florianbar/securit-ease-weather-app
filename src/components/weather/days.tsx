@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { format } from "date-fns";
 
 import { getFormattedTemp } from "@/utils/weather";
 import { WeatherResponseDay } from "@/types/weather";
@@ -10,10 +11,7 @@ function Days({ items, selectedDay, onSelect }: DaysProps) {
     <div className={styles.days}>
       {items.map((day: WeatherResponseDay) => {
         const isSelected = selectedDay?.datetime === day.datetime;
-
-        const dayOfWeek = new Date(day.datetime).toLocaleDateString("en-US", {
-          weekday: "short",
-        });
+        const dayOfWeek = format(new Date(day.datetime), "EEE");
 
         return (
           <div
