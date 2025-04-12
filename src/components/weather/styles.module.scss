@@ -1,3 +1,5 @@
+@import "@/sass/variables.scss";
+
 // create sass varaibles for easing
 $anim-duration: 0.2s;
 $anim-effect: ease-in-out;
@@ -17,16 +19,15 @@ $anim-effect: ease-in-out;
 
 .days {
   display: flex;
-  justify-content: space-between;
-  padding: 0.5rem;
+  justify-content: space-around;
 }
 
 .day {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
   border-radius: 0.5rem;
   border: 1px solid transparent;
   text-align: center;
@@ -41,29 +42,51 @@ $anim-effect: ease-in-out;
     background-color: #fff;
     border-color: #7bccff;
   }
+
+  @media (min-width: $screen-sm) {
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+  }
 }
 
 .icon {
-  width: 1.75rem;
-  height: 1.75rem;
+  width: 1.5rem;
+  height: 1.5rem;
+
+  @media (min-width: $screen-sm) {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
 }
 
 .dayOfWeek {
-  font-size: 0.75rem;
+  font-size: 0.6rem;
   text-transform: uppercase;
   font-weight: bold;
+
+  @media (min-width: $screen-sm) {
+    font-size: 0.75rem;
+  }
 }
 
 .temp {
-  font-size: 0.75rem;
+  font-size: 0.6rem;
   font-weight: bold;
+
+  @media (min-width: $screen-sm) {
+    font-size: 0.75rem;
+  }
 }
 
 .selectedDay {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
   margin: 2rem 0;
+
+  @media (min-width: $screen-sm) {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 0.75rem;
+  }
 }
 
 .selectedDayIcon {
@@ -84,14 +107,34 @@ $anim-effect: ease-in-out;
   }
 }
 
-.selectedDayTemp {
-  text-align: center;
+.selectedDayDetails {
   flex: 1;
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 1rem 0;
+
+  @media (min-width: $screen-sm) {
+    flex: 2;
+  }
+}
+
+.selectedDayTemp {
+  // flex: 1;
+  display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  justify-content: center;
   font-size: 1.5rem;
   font-weight: bold;
+  text-align: right;
+
+  @media (min-width: $screen-sm) {
+    flex: 1;
+    gap: 0.5rem;
+    text-align: center;
+  }
 }
 
 .maxTemp {
@@ -103,10 +146,14 @@ $anim-effect: ease-in-out;
 }
 
 .selectedDayInfo {
-  text-align: left;
   flex: 1;
+  text-align: left;
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
   font-size: 0.9rem;
+
+  @media (min-width: $screen-sm) {
+    text-align: left;
+  }
 }

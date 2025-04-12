@@ -16,18 +16,20 @@ function SelectedDay({ day }: SelectedDayProps) {
         />
         <p>{day.conditions}</p>
       </div>
-      <div className={styles.selectedDayTemp}>
-        <p className={styles.maxTemp}>
-          {getFormattedTemp(day.tempmax as number)}
-        </p>
-        <p className={styles.minTemp}>
-          {getFormattedTemp(day.tempmin as number)}
-        </p>
-      </div>
-      <div className={styles.selectedDayInfo}>
-        <p>Wind: {day.windgust} km/h</p>
-        <p>Precip: {day.precip} mm</p>
-        <p>Pressure: {day.pressure} mb</p>
+      <div className={styles.selectedDayDetails}>
+        <div className={styles.selectedDayTemp}>
+          <p className={styles.maxTemp}>
+            {getFormattedTemp(day.tempmax as number)}
+          </p>
+          <p className={styles.minTemp}>
+            {getFormattedTemp(day.tempmin as number)}
+          </p>
+        </div>
+        <div className={styles.selectedDayInfo}>
+          <p>Wind: {day.windgust} km/h</p>
+          <p>Precip: {day.precip} mm</p>
+          <p>Pressure: {day.pressure} mb</p>
+        </div>
       </div>
     </div>
   );
