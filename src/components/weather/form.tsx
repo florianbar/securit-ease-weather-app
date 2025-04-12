@@ -27,7 +27,7 @@ function Form({ onSubmit, disabled }: FormProps) {
   }
 
   return (
-    <form onSubmit={handleFormSubmit}>
+    <form onSubmit={handleFormSubmit} aria-label="Weather search form">
       <input
         type="text"
         placeholder="Enter a location"
