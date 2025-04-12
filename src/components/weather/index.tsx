@@ -1,7 +1,5 @@
 "use client";
 
-import { useEffect } from "react";
-
 import { useWeatherStore } from "@/stores/weather";
 import Form from "./form";
 import SelectedDay from "./selected-day";
@@ -15,10 +13,6 @@ function Weather() {
     error,
     actions: { fetchWeather, selectDay },
   } = useWeatherStore();
-
-  useEffect(() => {
-    console.log("Weather days:", days);
-  }, [days]);
 
   return (
     <>
